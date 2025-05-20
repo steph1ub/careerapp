@@ -46,7 +46,7 @@ async function handleFormSubmit (event: FormEvent<HTMLFormElement>){
 
   if(editId){
 
-const {error}= await supabase.from<Student>("students").update ([form]).eq ("id", editId)
+const {error}= await supabase.from("students").update ([form]).eq ("id", editId)
 
 if (error){
 
@@ -61,7 +61,7 @@ toast.success("Student updated succesfully")
 
   } else { 
 
-  const{error}= await supabase.from<Student>("students").insert([form])
+  const{error}= await supabase.from("students").insert([form])
 
 if(error){
 toast.error( `Failed to create ${error.message}`)
@@ -119,7 +119,7 @@ const result= await Swal.fire( {
   confirmButtonText: "Yes, delete it!"
 })
 if (result.isConfirmed){
-const {error} = await supabase.from<Student>("students").delete().eq ("id", id)
+const {error} = await supabase.from("students").delete().eq ("id", id)
 
 if (error){
   toast.error("Failed to delete student") 
